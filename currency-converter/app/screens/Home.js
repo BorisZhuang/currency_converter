@@ -1,0 +1,54 @@
+import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
+import { Container } from '../components/Container';
+import { Logo } from '../components/Logo';
+import { InputWithButton } from '../components/TextInput';
+import { ClearButton } from '../components/Buttons';
+
+const INIT_BASE_CURRENCY = 'USD';
+const INIT_QUOTE_CURRENCY = 'GBP';
+const INIT_BASE_PRICE = '100';
+const INIT_QUOTE_PRICE = '79.74';
+
+class Home extends Component {
+  handlePressBaseCurrency = () => {
+    console.log('base pressed.');
+  };
+
+  handlePressQuoteCurrency = () => {
+    console.log('quote pressed.');
+  };
+
+  handleTextChange = (text) => {
+    console.log('text changed', text);
+  };
+
+  handleSwapCurrency = () => {
+    console.log('swap currency pressed.');
+  };
+
+  render() {
+    return (
+      <Container>
+        <StatusBar translucent={false} barStyle="light-content" />
+        <Logo />
+        <InputWithButton
+          buttonText={INIT_BASE_CURRENCY}
+          onPress={this.handlePressBaseCurrency}
+          onChangeText={this.handleTextChange}
+          defaultValue={INIT_BASE_PRICE}
+          keyboardType="numeric"
+        />
+        <InputWithButton
+          buttonText={INIT_QUOTE_CURRENCY}
+          onPress={this.handlePressQuoteCurrency}
+          value={INIT_QUOTE_PRICE}
+          editable={false}
+        />
+        <ClearButton text="Reverse Currencies" onPress={this.handleSwapCurrency} />
+      </Container>
+    );
+  }
+}
+
+export default Home;
