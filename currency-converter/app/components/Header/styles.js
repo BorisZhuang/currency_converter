@@ -9,10 +9,12 @@ const styles = EStyleSheet.create({
     top: 0,
     "@media ios": {
       paddingTop: 20
-    },
+    }
+    /* We don't need this because of paddingTop in routes.js.
     "@media android": {
       paddingTop: StatusBar.currentHeight
     }
+    */
   },
   button: {
     alignSelf: "flex-end",
