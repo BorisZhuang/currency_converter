@@ -7,7 +7,11 @@ import { InputWithButton } from "../components/TextInput";
 import { ClearButton } from "../components/Buttons";
 import { LastConverted } from "../components/Text";
 import { Header } from "../components/Header";
-import { swapCurrency, changeCurrencyAmount } from "../actions/currencies";
+import {
+  swapCurrency,
+  changeCurrencyAmount,
+  getInitalConversion
+} from "../actions/currencies";
 import { connect } from "react-redux";
 
 class Home extends Component {
@@ -21,6 +25,10 @@ class Home extends Component {
     lastConvertedDate: PropTypes.object,
     primaryColor: PropTypes.string
   };
+
+  componentWillMount() {
+    this.props.dispatch(getInitalConversion());
+  }
 
   handlePressBaseCurrency = () => {
     this.props.navigation.navigate("CurrencyList", {
